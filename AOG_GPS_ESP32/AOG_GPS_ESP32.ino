@@ -73,7 +73,7 @@ struct set {
     char ssid_ap[24] = "GPS_unit_F9P_Net";  // name of Access point, if no WiFi found, NO password!!
     int timeoutRouter = 20;                //time (s) to search for existing WiFi, than starting Accesspoint 
 
-    byte timeoutWebIO = 255;                 //time (min) afterwards webinterface is switched off
+    byte timeoutWebIO = 5;                 //time (min) afterwards webinterface is switched off
      
     // Ntrip Caster Data
     char NtripHost[40] = "www.rtk2go.com";    // Server IP or URL
@@ -86,7 +86,7 @@ struct set {
                               // 1 = fixed Sentence from GGAsentence below will be sended
                               // 2 = GGA from GPS will be sended
 
-    char NtripFixGGASentence[100] = "$GPGGA,051353.171,4751.637,N,01224.003,E,1,12,1.0,0.0,M,0.0,M,,*6B"; //hc create via www.nmeagen.org
+    char NtripFixGGASentence[100] = "$GPGGA,131534.907,4808.020,N,01528.775,E,1,12,1.0,0.0,M,0.0,M,,*6C"; //hc create via www.nmeagen.org
 
     byte NtripGGASendRate = 10;         // time in seconds between GGA Packets
 
