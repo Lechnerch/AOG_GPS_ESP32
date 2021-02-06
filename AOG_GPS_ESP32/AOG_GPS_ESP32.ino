@@ -59,8 +59,8 @@ struct set {
     //WiFi---------------------------------------------------------------------------------------------
 #if HardwarePlatform == 0
     //tractors WiFi or mobile hotspots
-    char ssid1[24] =  "Fendt_209V";           // WiFi network Client name
-    char password1[24] = "";                 // WiFi network password//Accesspoint name and password
+    char ssid1[24] =  "HUAWEI-5F9B";           // WiFi network Client name
+    char password1[24] = "94425292";                 // WiFi network password//Accesspoint name and password
     char ssid2[24] = "Matthias Cat S62 Pro";// "Fendt_209V";           // WiFi network Client name
     char password2[24] = "";                 // WiFi network password//Accesspoint name and password
     char ssid3[24] =  "Fendt_209V";           // WiFi network Client name
@@ -76,9 +76,9 @@ struct set {
     byte timeoutWebIO = 255;                 //time (min) afterwards webinterface is switched off
      
     // Ntrip Caster Data
-    char NtripHost[40] = "www.sapos-bw-ntrip.de";    // Server IP or URL
+    char NtripHost[40] = "www.rtk2go.com";    // Server IP or URL
     int  NtripPort = 2101;                // Server Port
-    char NtripMountpoint[40] = "SAPOS-LW-MSM";   // Mountpoint
+    char NtripMountpoint[40] = "AUT_RAMETZHOFEN_MGI";   // Mountpoint
     char NtripUser[40] = "";     // Username
     char NtripPassword[40] = "";    // Password
 
@@ -98,7 +98,7 @@ struct set {
     byte WiFi_gwip[4] = { 192, 168, 1, 1 };      // Gateway IP only used if Accesspoint created
     byte mask[4] = { 255, 255, 255, 0 };
     byte myDNS[4] = { 8, 8, 8, 8 };         //optional
-    byte WiFi_ipDestination[4] = { 192, 168, 1, 255 };//IP address to send UDP data to
+    byte WiFi_ipDestination[4] = { 192, 168, 1, 100 };//IP address to send UDP data to
     byte Eth_ipDestination[4] = { 192, 168, 1, 255 };//IP address to send UDP data to
 
     unsigned int portMy = 5544;             //this is port of this module: Autosteer = 5577 IMU = 5566 GPS = 
@@ -108,10 +108,10 @@ struct set {
 #endif
 
     //Antennas position
-    double AntDist = 74.0;                //cm distance between Antennas
-    double AntHight = 228.0;              //cm hight of Antenna
-    double virtAntLeft = 42.0;           //cm to move virtual Antenna to the left (was renamed, keep your settings, name of direction was wrong)
-    double virtAntForew = 60.0;            //cm to move virtual Antenna foreward
+    double AntDist = 122.0;                //cm distance between Antennas
+    double AntHight = 290.0;              //cm hight of Antenna
+    double virtAntLeft = 61.0;           //cm to move virtual Antenna to the left (was renamed, keep your settings, name of direction was wrong)
+    double virtAntForew = 0.0;            //cm to move virtual Antenna foreward
     double headingAngleCorrection = 90;
 
     double AntDistDeviationFactor = 1.2;  // factor (>1), of whom lenght vector from both GPS units can max differ from AntDist before stop heading calc
@@ -125,10 +125,10 @@ struct set {
    
     byte DataTransVia = 7;// 7;                //transfer data via 0 = USB / 7 = WiFi UDP / 8 = WiFi UDP 2x / 10 = Ethernet UDP
 
-    byte NtripClientBy = 1;               //NTRIP client 0:off /1: listens for AOG NTRIP to UDP (WiFi/Ethernet) or USB serial /2: use ESP32 WiFi NTIRP client
+    byte NtripClientBy = 2;               //NTRIP client 0:off /1: listens for AOG NTRIP to UDP (WiFi/Ethernet) or USB serial /2: use ESP32 WiFi NTIRP client
 
     byte sendOGI = 1;                     //1: send NMEA message 0: off
-    byte sendVTG = 0;                     //1: send NMEA message 0: off
+    byte sendVTG = 1;                     //1: send NMEA message 0: off
     byte sendGGA = 0;                     //1: send NMEA message 0: off
     byte sendHDT = 0;                     //1: send NMEA message 0: off
 
@@ -144,7 +144,7 @@ struct set {
 }; set Set;
 
 
-bool EEPROM_clear = false;  //set to true when changing settings to write them as default values: true -> flash -> boot -> false -> flash again
+bool EEPROM_clear = true;  //set to true when changing settings to write them as default values: true -> flash -> boot -> false -> flash again
 
 
 
