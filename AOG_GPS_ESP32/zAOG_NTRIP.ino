@@ -1,7 +1,3 @@
-#if HardwarePlatform == 0
-
-//main NTRIP client loop, running in separate task
-
 void NTRIPCode(void* pvParameters) {
     unsigned long WiFi_Ntrip_lost_time = 0;// now;
 
@@ -10,12 +6,7 @@ void NTRIPCode(void* pvParameters) {
             task_NTRIP_running = true;
             if ((WiFi.status() == WL_CONNECTED) && (Ntrip_restart < 10)) { do_WiFi_NTRIP(); }
             else {
-                if (my_WiFi_Mode == 0){
-                    task_NTRIP_running = false;
-                    delay(1);
-                    vTaskDelete(NULL);
-                }
-                if (WiFi_Ntrip_lost_time == 0) { WiFi_Ntrip_lost_time = millis(); WiFi_connect_step = 1; }//first time
+                if (WiFi_Ntrip_lost_time == 0) { WiFi_Ntrip_lost_time = millis(); WiFi_reconnect_step = 1; }//first time
                 delay(1);
                 now = millis();
                 if (now > (WiFi_Ntrip_lost_time + 2000)) {
@@ -277,4 +268,3 @@ void setAuthorization(const char* user, const char* password)
        }
 }
 
-#endif
